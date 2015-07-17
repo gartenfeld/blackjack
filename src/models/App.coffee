@@ -6,3 +6,16 @@ class window.App extends Backbone.Model
     @set 'playerHand', deck.dealPlayer()
     @set 'dealerHand', deck.dealDealer()
 
+  stand: ->
+    @get('dealerHand').reveal()
+    @get('dealerHand').autoHit()
+    @judge()
+
+  judge: ->
+    console.log @get('playerHand').bestScore()
+    if @get('playerHand').bestScore() > @get('dealerHand').bestScore()
+      console.log('Player wins!')
+    else if @get('playerHand').bestScore() < @get('dealerHand').bestScore()
+      console.log('Dealer wins! :(')
+    else
+      console.log('Push');
