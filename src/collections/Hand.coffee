@@ -7,9 +7,13 @@ class window.Hand extends Backbone.Collection
     @add(@deck.pop())
 
   autoHit: ->
-    if @bestScore() < 17
-      @hit()
-      @autoHit()
+    if @bestScore() < 17 and @bestScore() isnt 0
+      setTimeout => 
+        @hit()
+        @autoHit()
+      , 500
+    else
+      @trigger "finishedHitting"
 
   reveal: ->
     @each (card) ->
