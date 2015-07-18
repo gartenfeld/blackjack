@@ -11,7 +11,8 @@ class window.App extends Backbone.Model
     @set 'playerHand', deck.dealPlayer()
     @set 'dealerHand', deck.dealDealer()
     @get('dealerHand').on('finishedHitting', @judge.bind(@))
-    
+    @get('playerHand').on('bust', @judge.bind(@))
+    if @get('playerHand').bestScore() is 21 then @set 'state', 'blackjack'
 
   stand: ->
     @get('dealerHand').reveal()

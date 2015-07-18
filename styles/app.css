@@ -1,3 +1,23 @@
+body {
+  background-image: url('../img/bg.jpg');
+  background-size: 100%;
+}
+
+#game-area {
+  width: 600px;
+  margin: 40px auto;
+}
+
+.playArea {
+  padding: 20px;
+  background-color: rgba(255, 255, 255, .1);
+  border-radius: 10px;
+}
+
+h2 {
+  color: #fff;
+}
+
 .card {
   float: left;
   border: solid 1px black;
@@ -5,8 +25,14 @@
   border-radius: 5px;
   height: 140px;
   margin-right: 20px;
+  margin-bottom: 10px;
+  background-size: 100%;
+  box-shadow: 6px 4px 5px #111;
 }
 
+.player-hand-container, .dealer-hand-container {
+  padding: 10px 10px 10px 10px;
+}
 .covered {
   background-color: black;
 }

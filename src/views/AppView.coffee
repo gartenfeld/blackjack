@@ -1,5 +1,7 @@
 class window.AppView extends Backbone.View
 
+  className: 'playArea'
+
   initialize: ->
     @render()
     @model.on('change', @render, @)

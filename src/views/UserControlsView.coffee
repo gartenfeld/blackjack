@@ -15,6 +15,10 @@ class window.UserControlsView extends Backbone.View
     <button class="play-again-button">Play Again</button>
   '
 
+  blackjackTemplate: _.template '
+    You got a blackjack! Hooray! <button class="play-again-button">Play Again</button>
+  '
+
   render: ->
     #if model.state is gameplay, show some buttons
     #if model.state is score, show replay button
@@ -22,6 +26,8 @@ class window.UserControlsView extends Backbone.View
       @$el.html @playTemplate()
     else if @model.get('state') is 'dealerTurn'
       @$el.html @dealerTemplate()
+    else if @model.get('state') is 'blackjack'
+      @$el.html @blackjackTemplate()
     else
       @$el.html @endTemplate()
   # flip: -> 
