@@ -4,13 +4,14 @@ class window.App extends Backbone.Model
 
   initialize: ->
     @set 'bank', new Bank(app: @)
-    @get('bank').on('betsPlaced', @closeBets)    
+    @get('bank').on('betsPlaced', @closeBets, @)    
     @takeBets()
   
   takeBets: ->
     @set 'state', 'takeBets'
   
   closeBets: ->
+    console.log("closing bets")
     @set 'state', 'gamePlay'
     @deal()
 
@@ -23,6 +24,7 @@ class window.App extends Backbone.Model
     @get('playerHand').on('bust', @judge.bind(@))
     @get('playerHand').on('yay', @stand.bind(@))
     if @get('playerHand').bestScore() is 21 then @set 'state', 'blackjack'
+    @trigger('refresh')
 
   stand: ->
     @get('dealerHand').reveal()

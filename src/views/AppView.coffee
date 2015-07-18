@@ -5,6 +5,7 @@ class window.AppView extends Backbone.View
   initialize: ->
     @render()
     @model.on('change', @render, @)
+    #@model.on('refresh', @render, @)
 
 
   template: _.template '
@@ -18,10 +19,13 @@ class window.AppView extends Backbone.View
     'click .play-again-button': -> @model.reset()
 
   render: ->
-    if @model.get 'state' isnt 'takeBets'
+    console.log "rendering app view, state is " + @model.get('state')
+    if @model.get('state') isnt 'takeBets'
       @$el.children().detach()
       @$el.html @template()
       @$el.prepend new UserControlsView(model: @model).render()
       @$('.player-hand-container').html new HandView(collection: @model.get 'playerHand').el
       @$('.dealer-hand-container').html new HandView(collection: @model.get 'dealerHand').el
-    @$el.append new BankView(model: @model.get("bank")).render()
+      @$el.append new BankView(model: @model.get("bank")).render()
+    else
+      @$el.html new BankView(model: @model.get("bank")).render()
