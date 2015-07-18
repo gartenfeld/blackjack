@@ -4,11 +4,11 @@ class window.Hand extends Backbone.Collection
   initialize: (array, @deck, @isDealer) ->
 
   hit: ->
-    @add(@deck.pop())
+    @add(@deck.pop().flip())
     if @bestScore() is 0
       @trigger "bust"
     if @bestScore() is 21
-      @trigger "yay"
+      @trigger "reachedTwentyOne"
 
   autoHit: ->
     if @bestScore() < 17 and @bestScore() isnt 0

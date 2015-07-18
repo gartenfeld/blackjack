@@ -1,17 +1,63 @@
+@import url(http://fonts.googleapis.com/css?family=Lato:400,700);
+
 body {
   background-image: url('../img/bg.jpg');
   background-size: 100%;
 }
 
+#wrapper {
+  width: 1000px;
+  margin-top: 50px;
+  margin-left: 100px;
+  height: 100%;
+}
+
+#shoe, #bank {
+  width: 180px;
+  height: inherit;
+  background-color: rgba(255, 255, 255, .1);
+  padding-top: 20px;
+  border-radius: 10px;
+  float: left;
+  color: #fff;
+  text-align: center;
+}
+
+#shoe {
+  padding-top: 40px;
+  position: relative;
+}
+
+button {
+  font-family: 'Lato';
+  font-weight: 700;
+  font-size: 120%;
+  margin: 5px auto;
+  padding: 10px 20px 10px 20px;
+  border-radius: 7px;
+  background-color: rgba(255, 255, 255, .1);
+  border-top: 2px solid #214200;
+  border-left: 2px solid #214200;
+  border-right: 3px solid #001F00;
+  border-bottom: 3px solid #001F00;
+  color: #fff;
+}
+
+#pot-amount {
+  font-size: 75;
+}
+
 #game-area {
   width: 600px;
-  margin: 40px auto;
+  height: inherit;
+  margin: 0px 10px 0px 10px;
+  background-color: rgba(255, 255, 255, .1);
+  border-radius: 10px;
+  float: left;
 }
 
 .playArea {
   padding: 20px;
-  background-color: rgba(255, 255, 255, .1);
-  border-radius: 10px;
 }
 
 h2 {
@@ -20,18 +66,19 @@ h2 {
 
 .card {
   float: left;
-  border: solid 1px black;
+  border: solid 1px #555;
   width: 100px;
   border-radius: 5px;
   height: 140px;
   margin-right: 20px;
   margin-bottom: 10px;
   background-size: 100%;
-  box-shadow: 6px 4px 5px #111;
+  box-shadow: 6px 4px 5px rgba(0, 0, 0, .5);
 }
 
 .player-hand-container, .dealer-hand-container {
-  padding: 10px 10px 10px 10px;
+  padding: 10px 10px 0px 10px;
+  font-family: 'Lato';
 }
 .covered {
   background-color: black;
