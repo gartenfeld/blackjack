@@ -18,8 +18,10 @@ class window.AppView extends Backbone.View
     'click .play-again-button': -> @model.reset()
 
   render: ->
-    @$el.children().detach()
-    @$el.html @template()
-    @$el.prepend new UserControlsView(model: @model).render()
-    @$('.player-hand-container').html new HandView(collection: @model.get 'playerHand').el
-    @$('.dealer-hand-container').html new HandView(collection: @model.get 'dealerHand').el
+    if @model.get 'state' isnt 'takeBets'
+      @$el.children().detach()
+      @$el.html @template()
+      @$el.prepend new UserControlsView(model: @model).render()
+      @$('.player-hand-container').html new HandView(collection: @model.get 'playerHand').el
+      @$('.dealer-hand-container').html new HandView(collection: @model.get 'dealerHand').el
+    @$el.append new BankView(model: @model.get("bank")).render()

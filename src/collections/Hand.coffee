@@ -7,6 +7,8 @@ class window.Hand extends Backbone.Collection
     @add(@deck.pop())
     if @bestScore() is 0
       @trigger "bust"
+    if @bestScore() is 21
+      @trigger "yay"
 
   autoHit: ->
     if @bestScore() < 17 and @bestScore() isnt 0

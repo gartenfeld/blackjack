@@ -3,15 +3,25 @@
 class window.App extends Backbone.Model
 
   initialize: ->
-    @deal()
+    @set 'bank', new Bank(app: @)
+    @get('bank').on('betsPlaced', @closeBets)    
+    @takeBets()
   
-  deal: ->
+  takeBets: ->
+    @set 'state', 'takeBets'
+  
+  closeBets: ->
     @set 'state', 'gamePlay'
+    @deal()
+
+  deal: ->
+    @set 'state', 'takeBets'
     @set 'deck', deck = new Deck()
     @set 'playerHand', deck.dealPlayer()
     @set 'dealerHand', deck.dealDealer()
     @get('dealerHand').on('finishedHitting', @judge.bind(@))
     @get('playerHand').on('bust', @judge.bind(@))
+    @get('playerHand').on('yay', @stand.bind(@))
     if @get('playerHand').bestScore() is 21 then @set 'state', 'blackjack'
 
   stand: ->
