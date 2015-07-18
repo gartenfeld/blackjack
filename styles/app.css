@@ -8,31 +8,57 @@ body {
 #wrapper {
   width: 1000px;
   margin-top: 50px;
-  margin-left: 100px;
-  height: 100%;
+  margin-left: 150px;
 }
 
 #shoe, #bank {
-  width: 180px;
-  height: inherit;
-  background-color: rgba(255, 255, 255, .1);
-  padding-top: 20px;
+  padding-top: 30px;
+  padding-bottom: 40px;
   border-radius: 10px;
   float: left;
   color: #fff;
   text-align: center;
 }
 
+#bank {
+  width: 160px;
+  margin-left: 20px;
+  background-color: rgba(255, 255, 255, .1);
+}
+
+#bank-controls {
+  margin-top: 20px;
+}
+
+.bet-button {
+  background-image: url('../img/five.jpg');
+  background-size: 100%;
+  color: #fff;
+  text-shadow: 0 0 4px #001F00;
+  margin-top: 20px;
+}
+
+.bet-button:hover {
+  text-shadow: 0 0 7px #000;
+}
+
+.bet-close-button {
+  width: 101px;
+  margin-left: -6px;
+}
+
 #shoe {
+  width: 120px;
   padding-top: 40px;
   position: relative;
+  margin-right: 30px;
 }
 
 button {
+  font-size: 120%;
   font-family: 'Lato';
   font-weight: 700;
-  font-size: 120%;
-  margin: 5px auto;
+  margin: 10px auto 5px auto;
   padding: 10px 20px 10px 20px;
   border-radius: 7px;
   background-color: rgba(255, 255, 255, .1);
@@ -43,13 +69,18 @@ button {
   color: #fff;
 }
 
+button:hover {
+  background-color: rgba(255, 255, 255, .15);
+}
+
 #pot-amount {
   font-size: 75;
 }
 
 #game-area {
   width: 600px;
-  height: inherit;
+  min-height: 500px;
+  padding-bottom: 40px;
   margin: 0px 10px 0px 10px;
   background-color: rgba(255, 255, 255, .1);
   border-radius: 10px;

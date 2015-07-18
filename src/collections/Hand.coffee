@@ -4,7 +4,9 @@ class window.Hand extends Backbone.Collection
   initialize: (array, @deck, @isDealer) ->
 
   hit: ->
-    @add(@deck.pop().flip())
+    card = @deck.pop()
+    card.setFaceUp()
+    @add(card)
     if @bestScore() is 0
       @trigger "bust"
     if @bestScore() is 21
@@ -41,6 +43,3 @@ class window.Hand extends Backbone.Collection
     adjustedScore = (for score in @scores()
       if score > 21 then 0 else score)
     Math.max adjustedScore...
-
-
-
