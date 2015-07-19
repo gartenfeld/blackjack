@@ -8,6 +8,7 @@ class window.App extends Backbone.Model
     @takeBets()
   
   takeBets: ->
+    $('#message').css('opacity': 0)
     @get('bank').startBetting()
     @set 'state', 'takeBets'
   
@@ -18,15 +19,15 @@ class window.App extends Backbone.Model
     @set 'deck', deck = new Deck()
     @set 'playerHand', deck.dealPlayer()
     @set 'dealerHand', deck.dealDealer()
-    @set 'state', 'gamePlay'
-    @get('dealerHand').on('finishedHitting', @judge.bind(@))
     @get('playerHand').on('bust', @judge.bind(@))
+    @get('dealerHand').on('bust', @judge.bind(@))
     @get('playerHand').on('reachedTwentyOne', @stand.bind(@))
+    @get('dealerHand').on('finishedHitting', @judge.bind(@))
+    @set 'state', 'gamePlay'
+    @trigger('refresh')
     if @get('playerHand').bestScore() is 21
       @set 'state', 'blackjack'
-      console.log "Blackjack!"
       @get('bank').payout('blackjack')
-    @trigger('refresh')
 
   stand: ->
     @get('dealerHand').reveal()
@@ -34,13 +35,13 @@ class window.App extends Backbone.Model
     @get('dealerHand').autoHit()
 
   judge: ->
+    @set 'state', 'dealerTurn'
     if @get('playerHand').bestScore() > @get('dealerHand').bestScore()
-      console.log('Player wins!')
       @get('bank').payout('win')
     else if @get('playerHand').bestScore() < @get('dealerHand').bestScore()
-      console.log('Dealer wins! :(')
+      $('#message').css('opacity': 1)
+      $('#message').text('You lost $' + @get('bank').get('currentBet'))
     else
-      console.log('Push')
       @get('bank').payout('push')
     @set 'state', 'finished'
 

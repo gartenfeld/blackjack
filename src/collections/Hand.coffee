@@ -4,9 +4,7 @@ class window.Hand extends Backbone.Collection
   initialize: (array, @deck, @isDealer) ->
 
   hit: ->
-    card = @deck.pop()
-    card.setFaceUp()
-    @add(card)
+    @add(@deck.pop().setFaceUp())
     if @bestScore() is 0
       @trigger "bust"
     if @bestScore() is 21
@@ -22,8 +20,7 @@ class window.Hand extends Backbone.Collection
       @trigger "finishedHitting"
 
   reveal: ->
-    @each (card) ->
-      card.setFaceUp()
+    @at(0).setFaceUp()
 
   hasAce: -> @reduce (memo, card) ->
     memo or card.get('value') is 1

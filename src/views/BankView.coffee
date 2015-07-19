@@ -23,6 +23,12 @@ class window.BankView extends Backbone.View
 
   render: ->
     @$el.find('#pot').html(@potTemplate(@model.attributes));
+   
+    if !window.hasInterval
+      window.hasInterval = true
+      setInterval ->
+        $('#pot-amount').css 'color', 'hsl(' + Math.floor(Math.random() * 360) + ', 100%, 70%)'
+      , 250
     @$el.find('#bank-controls').html @template(@model.attributes)
     if @model.get("app").get("state") is "takeBets"
       @$el.find('#bank-controls').append @betTemplate() 

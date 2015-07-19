@@ -8,16 +8,14 @@ class window.UserControlsView extends Backbone.View
     <button class="stand-button">Stand</button>
   '
   
-  dealerTemplate: _.template '
-    Dealer playing
-  '
+  dealerTemplate: _.template ''
 
   endTemplate: _.template '
     <button class="play-again-button">Play Again</button>
   '
 
   blackjackTemplate: _.template '
-    You got a blackjack! Hooray! <button class="play-again-button">Play Again</button>
+    <button class="play-again-button">Play Again</button>
   '
 
   render: ->

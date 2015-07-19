@@ -7,8 +7,7 @@ body {
 
 #wrapper {
   width: 1000px;
-  margin-top: 50px;
-  margin-left: 150px;
+  margin: 50px auto;
 }
 
 #shoe, #bank {
@@ -88,7 +87,7 @@ button:hover {
 }
 
 .playArea {
-  padding: 20px;
+  padding: 00px 0px 0px 40px;
 }
 
 h2 {
@@ -107,6 +106,10 @@ h2 {
   box-shadow: 6px 4px 5px rgba(0, 0, 0, .5);
 }
 
+.hit-button, .stand-button, .play-again-button {
+  margin-top: 40px;
+}
+
 .player-hand-container, .dealer-hand-container {
   padding: 10px 10px 0px 10px;
   font-family: 'Lato';
@@ -117,4 +120,23 @@ h2 {
 
 .hand {
   overflow: auto;
+}
+
+#pot-amount {
+  font-weight: bold;
+  transition: color 0.25s;
+}
+
+#message {
+  width: 495px;
+  color: #fff;
+  font-size: 300%;
+  font-weight: bold;
+  text-align: center;
+  position: absolute;
+  margin: 200px auto 0 190px;
+  background-color: rgba(0, 0, 0, .6);
+  opacity: 0;
+  padding: 20px 20px 20px 20px;
+  border-radius: 10px;
 }
